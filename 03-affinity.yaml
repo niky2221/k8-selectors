@@ -13,7 +13,8 @@ spec:
           - key: hardware
             operator: In
             values:
-            - gpu
+            - gpu            # if give aaffinity we must label nodes also with hardware=gpu
+                             # ("kubectl label nodes ip-192-268-42-32-ec2 hardware=gpu")
   containers:
   - name: nginx
     image: nginx
@@ -21,5 +22,5 @@ spec:
   - key: "gpu"
     operator: "Equal"
     value: "hardware"
-    effect: "NoSchedule"
+    effect: "NoSchedule"         #taint nodes are given gpu=hardware ("kubectl taint nodes ip-192-268-42-32-ec2 gpu=hardware:NoSchedule")
 
