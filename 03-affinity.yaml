@@ -18,8 +18,8 @@ spec:
   - name: nginx
     image: nginx
   tolerations:
-  - key: "gpu"
+  - key: "hardware"
     operator: "Equal"
-    value: "hardware"
+    value: "gpu"
     effect: "NoExecute"
 
