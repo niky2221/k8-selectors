@@ -10,16 +10,16 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: hardware
+          - key: gpu
             operator: In
             values:
-            - gpu
+            - hardware
   containers:
   - name: nginx
     image: nginx
   tolerations:
-  - key: "hardware"
+  - key: "gpu"
     operator: "Equal"
-    value: "gpu"
+    value: "hardware"
     effect: "NoSchedule"
 
