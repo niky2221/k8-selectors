@@ -8,3 +8,26 @@ spec:
   containers:
   - name: nginx
     image: nginx
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pod2
+  labels:
+    purpose: pod-affinity
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app-name
+            operator: In
+            values:
+            - pod1
+        topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx
+
+
